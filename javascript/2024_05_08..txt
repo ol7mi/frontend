@@ -17,3 +17,17 @@ Window
 2. DOM (Document Object Model) 
 3. JavaScript
 
+- write
+화면에 출력하는 함수
+document.write("Hello World!");
+
+- alert
+사용자가 확인 버튼을 누를 때까지 메시지를 보여주는 창
+alert("hi")
+
+- confirm
+`confirm` 함수는 확인 및 취소 버튼이 있는 모달 창을 보여줌
+사용자가 확인 버튼을 누르면 `true`, 그 외의 경우는 `false`를 반환
+
+- prompt
+함수가 실행되면 텍스트 메시지와 입력 필드(input field), 확인 및 취소 버튼이 있는 모달 창을 보여줌
