@@ -1,0 +1,35 @@
+💡 JQuery 란?
+JS 라이브러리 
+
+💡 목적  
+1. 더 쉬운 JS 를 사용하기 위해 
+    1. 기능적 확장이 아니라, 편의성 증가 목적 
+2. 브라우저 호환성 
+    1. 모든 브라우저에서 동일하게 동작하는 코드를 지원 
+
+💡 특징
+1. jQuery 내에 사용할 기능 95% 이상은 전부 function
+2. css 선택자를 사용할 수 있음 
+
+
+---
+
+jQuery 라이브러리 핵심 객체는 jQuery
+jQuery를 매번 사용하는게 불편해서 $로 alias
+
+객체 참조는 $.
+jQuery 함수 호출은 $()
+
+---
+
+💡 $() 대상 검색함수
+
+let inputAsJS = document.getElementById("input");
+let inputAsJQuery = $("#input");
+
+console.log(inputAsJS); //JS 객체
+console.log(inputAsJQuery); //jquery 객체로 한번 더 포장되어 나온다
+
+---
+
+JQuery 에서는 getAttribute → attr
