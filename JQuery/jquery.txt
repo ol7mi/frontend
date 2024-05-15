@@ -33,3 +33,8 @@ console.log(inputAsJQuery); //jquery 객체로 한번 더 포장되어 나온다
 ---
 
 JQuery 에서는 getAttribute → attr
+    
+- val() 함수
+    value 와 같다
+- html() 함수
+    innerHTML 와 같다
