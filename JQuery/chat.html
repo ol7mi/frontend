@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .container .output {
+            flex: 7;
+            overflow-y: auto;
+            background-color: powderblue;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .container .input {
+            flex: 3;
+            display: flex;
+            background-color: rgb(255, 217, 223);
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+
+        .inpoutTxt {
+            flex: 75;
+            overflow-y: auto;
+        }
+
+        .inpoutTxt input {
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+        }
+
+        .inpoutBtn {
+            flex: 25;
+        }
+
+        .inpoutBtn button {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            background-color: blanchedalmond;
+            border: none;
+            font-size: 25px;
+            letter-spacing: 2px;
+            transition: all 0.8 ease;
+        }
+
+        .inpoutBtn button:hover {
+            background-color: rgb(255, 217, 223);
+            color: #000;
+        }
+
+        .container .message {
+            display: flex;
+            align-items: center;
+        }
+
+        .container .message .txtStyle {
+            padding: 8px;
+            margin: 8px;
+            border-radius: 5px;
+            background-color: blanchedalmond;
+            display: inline-block;
+            max-width: 200px;
+            width: fit-content;
+        }
+
+        .container .message .date {
+            margin-left: 10px;
+        }
+
+        .output {
+            display: flex;
+            flex-direction: column;
+            word-break: break-all;
+        }
+
+        .output::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        .output::-webkit-scrollbar-thumb {
+            background-color: rgb(255, 217, 223);
+        }
+
+        .output::-webkit-scrollbar-track {
+            background-color: blanchedalmond;
+        }
+
+        #emoji {
+            width: 200px;
+            height: 400px;
+            background-color: rgb(255, 217, 223);
+            position: absolute;
+            left: 400px;
+            display: none;
+        }
+
+        #emoji>.emoBox {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 이모지 */
+        #emoji .emoBox div:first-child {
+            flex: 8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 이모지 상단 제목 */
+        #emoji .emoBox div:first-child>div:first-child {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* 실제 이모지가 들어간 div */
+        #emoji .emoBox div:first-child>div:last-child {
+            flex: 9;
+            display: flex;
+        }
+
+        #emoji .emoBox div:first-child>div:last-child div:first-child {
+            flex: 1;
+        }
+
+        #emoji .emoBox div:first-child>div:last-child div:last-child {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 버튼 */
+        /* 버튼 전체 div */
+        #emoji .emoBox div:last-child {
+            flex: 2;
+        }
+
+        #emoji .emoBox div:last-child button {
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        #econ {
+            font-size: 50px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 출력창 -->
+        <div class="output"></div>
+
+        <!-- 입력창 -->
+        <div class="input">
+
+            <!-- msg 입력 -->
+            <div class="inpoutTxt" id="msg" contenteditable="true"></div>
+
+            <!-- 이모지 버튼 -->
+            <div class="inpoutBtn" contenteditable="false">
+                <button id="econ">🐭</button>
+            </div>
+
+        </div>
+        <div id="emoji">
+            <div class="emoBox">
+                <div>
+                    <div>Emoticons</div>
+                    <div>
+                        <div>
+                            <img src="./20230821200132_ad9b29780d74b5fec837c5a533c9cd94_6ifn.gif" alt=""
+                                class="iconAll">
+                            <img src="./20230821200132_ad9b29780d74b5fec837c5a533c9cd94_6ifn.gif" alt="" class="iconAll">
+                            <img src="./20230821200133_ad9b29780d74b5fec837c5a533c9cd94_mgrr.gif" alt="" class="iconAll">
+                        </div>
+                        <div>
+                            <img src="./20230821200132_ad9b29780d74b5fec837c5a533c9cd94_ddmp.gif" alt="" class="iconAll">
+                            <img src="./20230821200132_ad9b29780d74b5fec837c5a533c9cd94_gatf.gif" alt="" class="iconAll">
+                            <img src="./bfed136cc37db8eee104710c1b78532cf43ad912ad8dd55b04db6a64cddaf76d.gif" alt=""
+                                class="iconAll">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button id="emojiBtn">X</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            //msg 입력하고 Enter 효과 
+            $("#msg").on("keypress", function (e) {
+                if (e.key === "Enter") {
+                    //내가 입력한 div
+                    let msg = $("#msg").html();
+
+                    //빈값
+                    if (msg == "") {
+                        return false;
+                    }
+
+                    //출력할 div
+                    let output = $(".container .output");
+
+                    let message = $("<div>").addClass("message");
+                    let div = $("<div>").addClass("txtStyle").html(msg);
+                    let date = $("<span>").addClass("date").html(getCurrentTime());
+                    message.append(div, date); //내가 입력한 값+시간을 div에 저장 
+                    output.append(message);
+
+                    $("#msg").html(""); //초기화 작업
+                    output.scrollTop(output[0].scrollHeight); //스크롤 아래로 고정
+                    e.preventDefault(); //기본 이벤트 방지
+                }
+            })
+            //현재시간 
+            function getCurrentTime() {
+                let d = new Date();
+                let h = d.getHours();
+                let m = d.getMinutes();
+                let s = d.getSeconds();
+                return h + ":" + m + ":" + s;
+            }
+            //이모지 버튼 클릭 효과 
+            $("#econ").on("click", function () {
+                $("#emoji").toggleClass('imoticon-on');
+
+                if ($("#emoji").hasClass('imoticon-on')) {
+                    $("#emoji").css({ "display": "block" });
+                } else {
+                    $("#emoji").css({ "display": "none" });
+                }
+            });
+            $("#emojiBtn").on("click", function () {
+                $("#emoji").css({ "display": "none" });
+            })
+            //이모지 클릭시 입려창으로 이동
+            $(".iconAll").on("click", function () {
+                let imgSrc = $(this).attr("src"); // 클릭한 이미지의 소스 가져오기
+                let imgTag = $("<img>").attr("src", imgSrc); // 새 img 태그 생성
+                imgTag.css({ "width": "30%", "height": "auto", "padding": "0" }); // 이미지 크기 조정
+                $("#msg").append(imgTag); // 메시지 입력 상자에 이미지 추가
+            });
+
+        })
+
+
+    </script>
+</body>
+
+</html>
