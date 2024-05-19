@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = "안녕하세요. 저는 Jack 입니다. 급한 일은 01043211234 로 연락주세요.";
+        let regex = /01[\d]\d{4}\d{4}/;
+        let result = regex.test(str);
+        if (result) {
+            console.log("핸드폰 번호 존재함");
+        } else {
+            console.log("존재하지 않음");
+        }
+    </script>
+</body>
+
+</html>

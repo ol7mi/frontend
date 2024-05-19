@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="phone">
+    <button id="btn">검증</button>
+    <fieldset>
+        <legend>검증 결과</legend>
+        <div id="result"></div>
+    </fieldset>
+
+    <script>
+        let result = $("#result");
+        // let regex = /^01[\d]\d{4}\d{4}$/g;
+        // 외부에 쓰면 g 옵션을 빼야한다 자꾸 번갈아서 동작하는 문제가 있다 그래서 g를 뺴야됨 그래야 문제가 없음 
+        let regex = /^01\d\d{4}\d{4}$/;
+        $("#btn").on("click", function () {
+            let str = $("#phone").val();
+            let test = regex.test(str);
+            if (test) {
+                result.html("핸드폰 번호가 맞습니다.");
+            } else {
+                result.html("핸드폰 번호가 틀립니다.");
+            }
+        })
+    </script>
+</body>
+
+</html>
