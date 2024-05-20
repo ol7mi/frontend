@@ -2131,12 +2131,11 @@
                      <dt>
                         <a  href="/webtoon/list?titleId=783534&wee`
 
-
         let regex = /<img .+? src="(.+?)".+?title="(.+?)".+?<strong>(.+?)<\/strong>/gs;
 
         let table = '<table><tr><th>표지</th><th>제목</th><th>평점</th></tr>';
-
         let result;
+        
         while ((result = regex.exec(str)) !== null) {
             table += '<tr>';
             table += '<td><img src="' + result[1] + '" ></td>';
